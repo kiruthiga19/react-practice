@@ -12,11 +12,30 @@ import LifecycleB from './LifeCycleB'
     
     static getDerivedStateFromProps(props,state){
         console.log('lifecyclea getDerivedStateFromProps ')
-        return null
+        return null // it return new state or null 
     }
 
     componentDidMount(){
         console.log('componentDidMount')
+    }
+// update life cycle method
+    shouldComponentUpdate(){
+      console.log('lifecycleA should component update')
+      return true
+    }
+    getSnapshotBeforeUpdate(prevProps,prevState){
+      console.log('getSnapshotBeforeUpdate')
+      return null
+    }
+
+    componentDidUpdate(){
+      console.log('component did update')
+    }
+
+    changeState = ()=>{
+      this.setState({
+        name:'code react`'
+      })
     }
 
   render() {
@@ -25,6 +44,7 @@ import LifecycleB from './LifeCycleB'
       <div>
         <div>
         lifecycleA
+        <button onClick={this.changeState}>change state</button>
         </div>
         <LifecycleB></LifecycleB>
       </div>
